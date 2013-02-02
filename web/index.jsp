@@ -10,6 +10,22 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
+        <script type="text/javascript">
+            function valTriangle(){
+                alert("Validating fields");
+              //  var s1 = document.forms["triangle"]["side1"].value;
+              //  var s2 = document.forms["triangle"]["side2"].value;
+                
+              //  if ((s1 != null || s1 != "") && (s2 != null || s2 != "")){
+              //      return true;
+              //  } else {
+              //      alert("You must enter numbers for side 1 and side 2");
+              //      return false;
+              //  }
+            }
+            
+            
+        </script>
     </head>
     <body>
         <h1>Welcome!</h1>
@@ -32,12 +48,14 @@
         </form>
         <hr>
         <!--TRIANGLE-->
-        <form id="triangle" name="triangle" method="POST" action="TriangleServlet">
-            <h4>Find the 3rd side of a triangle</h4>
+        <form id="triangle" name="triangle" method="POST" action="TriangleServlet"
+              onsubmit="return valTriange()">
+            <h4>Find the hypotenuse of a triangle</h4>
             Side 1: <input type="text" name="side1"><br/>
             Side 2: <input type="text" name="side2"><br/>
             <button type="submit" id="submitTriangle" name="submitTriangle">
                 Submit</button>
         </form>
+        
     </body>
 </html>

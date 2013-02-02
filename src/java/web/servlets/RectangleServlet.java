@@ -78,7 +78,8 @@ public class RectangleServlet extends HttpServlet {
             throws ServletException, IOException {
         double w = Double.parseDouble(request.getParameter("width"));
         double l = Double.parseDouble(request.getParameter("length"));
-        double result = (w * l);
+        double area = (w * l);
+        String result = "The area of the rectangle is " + area;
         
         request.setAttribute("result", result);
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");

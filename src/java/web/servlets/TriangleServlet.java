@@ -19,8 +19,10 @@ import javax.servlet.http.HttpServletResponse;
  * @author eedgar
  */
 public class TriangleServlet extends HttpServlet {
-private final Logger logger = 
+
+    private final Logger logger =
             Logger.getLogger(this.getClass().getName());
+
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -39,13 +41,13 @@ private final Logger logger =
             /* TODO output your page here. You may use following sample code. */
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet TriangleServlet</title>");            
+            out.println("<title>Servlet TriangleServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet TriangleServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        } finally {            
+        } finally {
             out.close();
         }
     }
@@ -78,14 +80,30 @@ private final Logger logger =
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        double side1 = Double.parseDouble(request.getParameter("side1"));
-        double side2 = Double.parseDouble(request.getParameter("side2"));
-        double result = (((side1 * side1) + (side2 * side2)));
+//        if ((request.getParameter("side1") != null)
+//                || (request.getParameter("side2") != null)
+//                || (request.getParameter("hyp") != null)) {
+//            request.setAttribute("result", "You must enter two numbers");
+//        }
+//        if (request.getParameter("side1") != null) {
+            double side1 = Double.parseDouble(request.getParameter("side1"));
+//
+//        }
+//        if (request.getParameter("side2") != null) {
+            double side2 = Double.parseDouble(request.getParameter("side2"));
+//        }
+//        if (request.getParameter("hyp") != null) {
+//            double hyp = Double.parseDouble(request.getParameter("hyp"));
+//        }
+
         
+        double hyp = (Math.sqrt((side1 * side1) + (side2 * side2)));
+
+        String result = "The hypotenuse of the triangle is " + hyp;
         request.setAttribute("result", result);
         RequestDispatcher view = request.getRequestDispatcher("result.jsp");
         view.forward(request, response);
-       // processRequest(request, response);
+        // processRequest(request, response);
     }
 
     /**
