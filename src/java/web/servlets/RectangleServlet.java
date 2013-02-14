@@ -1,24 +1,21 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package web.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.logging.*;
-import javax.servlet.RequestDispatcher;
+
 /**
  *
- * @author eedgar
+ * @author Emma Edgar
+ * This servlet calculates the area of a rectangle.
  */
 public class RectangleServlet extends HttpServlet {
-    private final Logger logger = 
-            Logger.getLogger(this.getClass().getName());
+
+
     /**
      * Processes requests for both HTTP
      * <code>GET</code> and
@@ -34,16 +31,15 @@ public class RectangleServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RectangleServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RectangleServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        } finally {            
+            double w = Double.parseDouble(request.getParameter("width"));
+            double l = Double.parseDouble(request.getParameter("length"));
+            double area = (w * l);
+            String result = "The area of the rectangle is " + area;
+
+            request.setAttribute("result", result);
+            RequestDispatcher view = request.getRequestDispatcher("result.jsp");
+            view.forward(request, response);
+        } finally {
             out.close();
         }
     }
@@ -76,15 +72,8 @@ public class RectangleServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        double w = Double.parseDouble(request.getParameter("width"));
-        double l = Double.parseDouble(request.getParameter("length"));
-        double area = (w * l);
-        String result = "The area of the rectangle is " + area;
-        
-        request.setAttribute("result", result);
-        RequestDispatcher view = request.getRequestDispatcher("result.jsp");
-        view.forward(request, response);
-      //  processRequest(request, response);
+
+        processRequest(request, response);
     }
 
     /**

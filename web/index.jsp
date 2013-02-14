@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Jan 31, 2013, 1:43:02 PM
-    Author     : eedgar
+    Author     : Emma Edgar
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Welcome to the shape calculator</title>
         <script type="text/javascript">
             function isNumber(n) {
                 return !isNaN(parseFloat(n)) && isFinite(n);
@@ -24,7 +24,6 @@
                     return false;
                 } else {
                     if (isNumber(w) && isNumber(l)){
-                          alert("Valid numbers");
                     return true;
                     }else{
                         alert("You must enter numbers");
@@ -41,7 +40,6 @@
                     return false;
                 } else {
                     if (isNumber(r)){
-                        alert("valid numbers");
                     return true;
                     } else{
                         alert("You must enter numbers");
@@ -59,7 +57,6 @@
                     return false;
                 } else {
                     if (isNumber(s1) && isNumber(s2)){
-                        alert("Valid numbers");
                     return true;
                     } else{
                         alert("You must enter numbers");
